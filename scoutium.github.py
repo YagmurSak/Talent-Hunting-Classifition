@@ -52,7 +52,6 @@ check_df(scoutium_attributes)
 
 df = df[df['position_id'] != 1]
 
-
 # Remove the below_average class in potential_label from the dataset.
 
 df = df[df['potential_label'] != 'below_average']
@@ -74,7 +73,6 @@ pivot_table_df.head()
 
 num_cols = pivot_table_df.select_dtypes(include=['number']).columns.tolist()
 
-
 # Scaling Numeric Columns
 
 scaler = StandardScaler()
@@ -88,12 +86,10 @@ def label_encoder(dataframe, binary_col):
     dataframe[binary_col] = labelencoder.fit_transform(dataframe[binary_col])
     return dataframe
 
-
 labelEncoderCols = ["potential_label"]
 
 for col in labelEncoderCols:
     new_df = label_encoder(new_df, col)
-
 
 # Fitting Models
 
